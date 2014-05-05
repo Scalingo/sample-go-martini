@@ -8,10 +8,22 @@ First, you need to have a working go environment:
 
 http://golang.org/doc/install
 
+### Godep
+
+This go application is using github.com/kr/godeps to manage
+its dependencies, it is required to install it in order to
+get the right version of each third-party library.
+
+`go get github.com/kr/godeps`
+
+### Build
 ```sh
-go get github.com/Appsdeck/sample-go-martini
-go install github.com/Appsdeck/sample-go-martini
-sample-go-martini
+godep build
+```
+
+### Execute
+```sh
+./sample-go-martini
 ```
 
 Deploying on Appsdeck
