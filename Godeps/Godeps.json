@@ -7,14 +7,13 @@
 			"Rev": "9aea7a2fa5b79ef7fc00f63a575e72df33b4e886"
 		},
 		{
-			"ImportPath": "github.com/codegangsta/martini",
-			"Comment": "v0.1-126-g07eaab3",
-			"Rev": "07eaab39e5e3544f62c334f8380cc6bc0398fdea"
+			"ImportPath": "github.com/go-martini/martini",
+			"Comment": "v0.1-153-gbaa4221",
+			"Rev": "baa42219288cdd775874794381aa987144012263"
 		},
 		{
-			"ImportPath": "github.com/codegangsta/martini-contrib/render",
-			"Comment": "v0.1-125-g69512b1",
-			"Rev": "69512b1b44a0cb0e12392ab264b5c3c4744f6fcc"
+			"ImportPath": "github.com/martini-contrib/render",
+			"Rev": "870b5a6054ac0e6f2731a27f6156b93c8dd45e4b"
 		}
 	]
 }
