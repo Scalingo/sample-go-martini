@@ -1,1 +1,1 @@
-web: main
+web: sample-go-martini
