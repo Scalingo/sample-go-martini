@@ -8,8 +8,8 @@
 		},
 		{
 			"ImportPath": "github.com/go-martini/martini",
-			"Comment": "v0.1-153-gbaa4221",
-			"Rev": "baa42219288cdd775874794381aa987144012263"
+			"Comment": "v1.0-rc1-25-ga99b738",
+			"Rev": "a99b7388b2e5f7b8a0a024955036296a4a4e0fea"
 		},
 		{
 			"ImportPath": "github.com/martini-contrib/render",
