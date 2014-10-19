@@ -3,7 +3,8 @@ package martini
 import (
 	"log"
 	"net/http"
-	"path"
+	"net/url"
+	"path/filepath"
 	"strings"
 )
 
@@ -44,6 +45,9 @@ func prepareStaticOptions(options []StaticOptions) StaticOptions {
 
 // Static returns a middleware handler that serves static files in the given directory.
 func Static(directory string, staticOpt ...StaticOptions) Handler {
+	if !filepath.IsAbs(directory) {
+		directory = filepath.Join(Root, directory)
+	}
 	dir := http.Dir(directory)
 	opt := prepareStaticOptions(staticOpt)
 
@@ -78,11 +82,16 @@ func Static(directory string, staticOpt ...StaticOptions) Handler {
 		if fi.IsDir() {
 			// redirect if missing trailing slash
 			if !strings.HasSuffix(req.URL.Path, "/") {
-				http.Redirect(res, req, req.URL.Path+"/", http.StatusFound)
+				dest := url.URL{
+					Path:     req.URL.Path + "/",
+					RawQuery: req.URL.RawQuery,
+					Fragment: req.URL.Fragment,
+				}
+				http.Redirect(res, req, dest.String(), http.StatusFound)
 				return
 			}
 
-			file = path.Join(file, opt.IndexFile)
+			file = filepath.Join(file, opt.IndexFile)
 			f, err = dir.Open(file)
 			if err != nil {
 				return
