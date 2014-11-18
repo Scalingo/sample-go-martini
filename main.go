@@ -1,6 +1,12 @@
 package main
 
 import (
+	"net"
+	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
 )
@@ -17,5 +23,25 @@ func main() {
 		r.HTML(200, "index", nil)
 	})
 
-	m.Run()
+	port := "3000"
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	}
+
+	listener, err := net.Listen("tcp", ":"+port)
+	if err != nil {
+		panic(err)
+	}
+
+	sigs := make(chan os.Signal)
+	signal.Notify(sigs, syscall.SIGTERM)
+	go func() {
+		<-sigs
+		listener.Close()
+	}()
+
+	err = http.Serve(listener, m)
+	if err != nil {
+		panic(err)
+	}
 }
