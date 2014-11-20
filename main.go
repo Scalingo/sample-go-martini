@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net"
 	"net/http"
 	"os"
@@ -33,15 +34,11 @@ func main() {
 		panic(err)
 	}
 
+	go http.Serve(listener, m)
+
 	sigs := make(chan os.Signal)
 	signal.Notify(sigs, syscall.SIGTERM)
-	go func() {
-		<-sigs
-		listener.Close()
-	}()
-
-	err = http.Serve(listener, m)
-	if err != nil {
-		panic(err)
-	}
+	<-sigs
+	fmt.Println("SIGTERM, time to shutdown")
+	listener.Close()
 }
