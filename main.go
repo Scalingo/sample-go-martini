@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"net/http"
 	"os"
@@ -35,6 +36,7 @@ func main() {
 	}
 
 	go http.Serve(listener, m)
+	log.Println("Listening on 0.0.0.0:" + port)
 
 	sigs := make(chan os.Signal)
 	signal.Notify(sigs, syscall.SIGTERM)
