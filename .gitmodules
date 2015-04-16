@@ -1,0 +1,3 @@
+[submodule "bp"]
+	path = bp
+	url = https://github.com/kr/heroku-buildpack-go
