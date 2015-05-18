@@ -26,19 +26,24 @@ godep build
 ./sample-go-martini
 ```
 
-Deploying on Appsdeck
+Deploying on Scalingo
 ---------------------
 
-Create an application on https://appsdeck.eu, then:
+Create an application on https://scalingo.com, then:
 
 ```
-git remote add appsdeck git@appsdeck.eu:<name_of_your_app>.git
-git push appsdeck master
+git remote add scalingo git@scalingo.com:<name_of_your_app>.git
+git push scalingo master
 ```
 
 And that's it!
 
-The application is running at this url: https://sample-go-martini.appsdeck.eu/
+The application is running at this url: https://sample-go-martini.scalingo.io/
+
+Deploy in one click
+-------------------
+
+[![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button.png)](https://my.scalingo.com/deploy)
 
 Links
 -----
