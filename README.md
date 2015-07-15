@@ -44,6 +44,7 @@ Deploy in one click
 -------------------
 
 [![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button.png)](https://my.scalingo.com/deploy)
+[![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button-white.png)](https://d.scalingo.dev/deploy)
 
 Links
 -----
