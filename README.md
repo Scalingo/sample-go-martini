@@ -43,8 +43,7 @@ The application is running at this url: https://sample-go-martini.scalingo.io/
 Deploy in one click
 -------------------
 
-[![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button.png)](https://my.scalingo.com/deploy)
-[![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button-white.png)](https://d.scalingo.dev/deploy)
+[![Deploy to Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy)
 
 Links
 -----
