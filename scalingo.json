@@ -3,16 +3,5 @@
   "description": "Sample web application using the Go framework Martini",
   "logo": "https://scalingo.com/logo.svg",
   "repository": "https://github.com/Scalingo/sample-go-martini",
-  "website": "https://scalingo.com",
-  "env": {
-    "VAR_TEST_1": {
-      "description": "test variable number 1",
-      "value": "1"
-    },
-    "VAR_SECRET_1": {
-      "description": "generated variable 1",
-      "generator": "secret"
-    }
-  },
-  "addons": ["scalingo-redis"]
+  "website": "https://scalingo.com"
 }
