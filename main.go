@@ -25,6 +25,8 @@ func main() {
 		r.HTML(200, "index", nil)
 	})
 
+	panic("this is crashing")
+
 	port := "3000"
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
