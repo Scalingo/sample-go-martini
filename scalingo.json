@@ -9,5 +9,9 @@
       "amount": 1,
       "size": "S"
     }
-  }
+  },
+  "scripts": {
+    "postdeploy": "echo hello"
+  },
+  "addons": ["scalingo-redis"]
 }
