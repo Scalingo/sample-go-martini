@@ -1,6 +1,7 @@
 {
 	"ImportPath": "github.com/Scalingo/sample-go-martini",
-	"GoVersion": "go1.3.3",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v74",
 	"Deps": [
 		{
 			"ImportPath": "github.com/codegangsta/inject",
