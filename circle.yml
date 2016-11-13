@@ -7,3 +7,7 @@ deployment:
       - tar xvf scalingo_1.3.1_linux_amd64.tar.gz
       - scalingo_1.3.1_linux_amd64/scalingo login --ssh
       - scalingo_1.3.1_linux_amd64/scalingo run rake db:migrate
+test:
+  override:
+    - go test -v -race $(go list ./... | grep -v vendor)
+
