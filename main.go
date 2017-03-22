@@ -41,6 +41,6 @@ func main() {
 	sigs := make(chan os.Signal)
 	signal.Notify(sigs, syscall.SIGTERM)
 	<-sigs
-	fmt.Println("SIGTERM, time to shutdown")
+	fmt.Println("SIGTERM, time to shtdown")
 	listener.Close()
 }
