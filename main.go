@@ -7,7 +7,9 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
+	"time"
 
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
@@ -21,7 +23,11 @@ func main() {
 		},
 	))
 
-	m.Get("/", func(r render.Render) {
+	m.Get("/", func(r render.Render, req *http.Request) {
+		if req.URL.Query().Get("wait") != "" {
+			sleep, _ := strconv.Atoi(req.URL.Query().Get("wait"))
+			time.Sleep(time.Duration(sleep) * time.Second)
+		}
 		r.HTML(200, "index", nil)
 	})
 
