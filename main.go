@@ -31,6 +31,12 @@ func main() {
 		r.HTML(200, "index", nil)
 	})
 
+	m.Get("/crash", func(r render.Render, req *http.Request) {
+		fmt.Fprintf(os.Stderr, "CRASHING !!! (stderr)\n")
+		fmt.Fprintf(os.Stdout, "CRASHING !!! (stdout)\n")
+		os.Exit(1)
+	})
+
 	port := "3000"
 	if os.Getenv("PORT") != "" {
 		port = os.Getenv("PORT")
