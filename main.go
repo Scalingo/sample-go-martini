@@ -54,7 +54,8 @@ func main() {
 }
 
 func sLog() {
-	a := rand.Int()
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	a := r.Int()
 	for {
 		time.Sleep(200 * time.Millisecond)
 		log.Println("Hello: " + strconv.Itoa(a))
