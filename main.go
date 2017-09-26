@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"math/rand"
 	"net"
 	"net/http"
 	"os"
@@ -43,10 +44,19 @@ func main() {
 
 	go http.Serve(listener, m)
 	log.Println("Listening on 0.0.0.0:" + port)
+	go sLog()
 
 	sigs := make(chan os.Signal)
 	signal.Notify(sigs, syscall.SIGTERM)
 	<-sigs
 	fmt.Println("SIGTERM, time to shutdown")
 	listener.Close()
+}
+
+func sLog() {
+	a := rand.Int()
+	for {
+		time.Sleep(200 * time.Millisecond)
+		log.Println("Hello: " + strconv.Itoa(a))
+	}
 }
