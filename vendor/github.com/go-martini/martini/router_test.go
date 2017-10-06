@@ -50,9 +50,6 @@ func Test_Routing(t *testing.T) {
 	req13, _ := http.NewRequest("GET", "http://localhost:3000/bazz/in/ga", nil)
 	context13 := New().createContext(recorder, req13)
 
-	req14, _ := http.NewRequest("GET", "http://localhost:3000/bzz", nil)
-	context14 := New().createContext(recorder, req14)
-
 	result := ""
 	router.Get("/foo", func(req *http.Request) {
 		result += "foo"
@@ -113,9 +110,6 @@ func Test_Routing(t *testing.T) {
 	}, func() {
 		result += "inga"
 	})
-	router.AddRoute("GET", "/bzz", func(c Context) {
-		result += "bzz"
-	})
 
 	router.Handle(recorder, req, context)
 	router.Handle(recorder, req2, context2)
@@ -130,8 +124,7 @@ func Test_Routing(t *testing.T) {
 	router.Handle(recorder, req11, context11)
 	router.Handle(recorder, req12, context12)
 	router.Handle(recorder, req13, context13)
-	router.Handle(recorder, req14, context14)
-	expect(t, result, "foobarbatbarfoofezpopbapwappowwappowoptsfoobazzingagetbazzingapostbazzingagroupceptionbzz")
+	expect(t, result, "foobarbatbarfoofezpopbapwappowwappowoptsfoobazzingagetbazzingapostbazzingagroupception")
 	expect(t, recorder.Code, http.StatusNotFound)
 	expect(t, recorder.Body.String(), "404 page not found\n")
 }
@@ -236,25 +229,24 @@ var routeTests = []struct {
 	path   string
 
 	// out
-	match  RouteMatch
+	ok     bool
 	params map[string]string
 }{
-	{"GET", "/foo/123/bat/321", ExactMatch, map[string]string{"bar": "123", "baz": "321"}},
-	{"POST", "/foo/123/bat/321", NoMatch, map[string]string{}},
-	{"GET", "/foo/hello/bat/world", ExactMatch, map[string]string{"bar": "hello", "baz": "world"}},
-	{"GET", "foo/hello/bat/world", NoMatch, map[string]string{}},
-	{"GET", "/foo/123/bat/321/", ExactMatch, map[string]string{"bar": "123", "baz": "321"}},
-	{"GET", "/foo/123/bat/321//", NoMatch, map[string]string{}},
-	{"GET", "/foo/123//bat/321/", NoMatch, map[string]string{}},
-	{"HEAD", "/foo/123/bat/321/", OverloadMatch, map[string]string{"bar": "123", "baz": "321"}},
+	{"GET", "/foo/123/bat/321", true, map[string]string{"bar": "123", "baz": "321"}},
+	{"POST", "/foo/123/bat/321", false, map[string]string{}},
+	{"GET", "/foo/hello/bat/world", true, map[string]string{"bar": "hello", "baz": "world"}},
+	{"GET", "foo/hello/bat/world", false, map[string]string{}},
+	{"GET", "/foo/123/bat/321/", true, map[string]string{"bar": "123", "baz": "321"}},
+	{"GET", "/foo/123/bat/321//", false, map[string]string{}},
+	{"GET", "/foo/123//bat/321/", false, map[string]string{}},
 }
 
 func Test_RouteMatching(t *testing.T) {
 	route := newRoute("GET", "/foo/:bar/bat/:baz", nil)
 	for _, tt := range routeTests {
-		match, params := route.Match(tt.method, tt.path)
-		if match != tt.match || params["bar"] != tt.params["bar"] || params["baz"] != tt.params["baz"] {
-			t.Errorf("expected: (%v, %v) got: (%v, %v)", tt.match, tt.params, match, params)
+		ok, params := route.Match(tt.method, tt.path)
+		if ok != tt.ok || params["bar"] != tt.params["bar"] || params["baz"] != tt.params["baz"] {
+			t.Errorf("expected: (%v, %v) got: (%v, %v)", tt.ok, tt.params, ok, params)
 		}
 	}
 }
@@ -415,14 +407,9 @@ func Test_URLFor(t *testing.T) {
 		// Nothing
 	}).Name("bar")
 
-	router.Get("/baz/:id/(?P<name>[a-z]*)", func(params Params, routes Routes) {
-		// Nothing
-	}).Name("baz_id")
-
 	router.Get("/bar/:id/:name", func(params Params, routes Routes) {
 		expect(t, routes.URLFor("foo", nil), "/foo")
 		expect(t, routes.URLFor("bar", 5), "/bar/5")
-		expect(t, routes.URLFor("baz_id", 5, "john"), "/baz/5/john")
 		expect(t, routes.URLFor("bar_id", 5, "john"), "/bar/5/john")
 	}).Name("bar_id")
 
