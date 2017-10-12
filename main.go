@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net"
@@ -16,6 +17,17 @@ import (
 )
 
 func main() {
+	var tcp bool
+	flag.BoolVar(&tcp, "tcp", false, "tcp server")
+	flag.Parse()
+	if tcp {
+		tcpServer()
+	} else {
+		webServer()
+	}
+}
+
+func webServer() {
 	m := martini.Classic()
 	m.Use(render.Renderer(
 		render.Options{
@@ -49,4 +61,39 @@ func main() {
 	<-sigs
 	fmt.Println("SIGTERM, time to shutdown")
 	listener.Close()
+}
+
+func tcpServer() {
+	port := "5000"
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	}
+	l, err := net.Listen("tcp", ":"+port)
+	if err != nil {
+		fmt.Println("Error listening:", err.Error())
+		os.Exit(1)
+	}
+	defer l.Close()
+	fmt.Println("Listening on :" + port)
+	for {
+		conn, err := l.Accept()
+		if err != nil {
+			fmt.Println("Error accepting: ", err.Error())
+			os.Exit(1)
+		}
+		go handleTcpRequest(conn)
+	}
+}
+
+func handleTcpRequest(conn net.Conn) {
+	for {
+		buf := make([]byte, 1024)
+		reqLen, err := conn.Read(buf)
+		if err != nil {
+			fmt.Println("Error reading:", err.Error())
+			return
+		}
+		fmt.Println(string(buf[0 : reqLen-1]))
+		conn.Write([]byte("Message received.\n"))
+	}
 }
