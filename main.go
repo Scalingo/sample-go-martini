@@ -65,8 +65,8 @@ func webServer() {
 
 func tcpServer() {
 	port := "5000"
-	if os.Getenv("PORT") != "" {
-		port = os.Getenv("PORT")
+	if os.Getenv("TCP_PORT") != "" {
+		port = os.Getenv("TCP_PORT")
 	}
 	l, err := net.Listen("tcp", ":"+port)
 	if err != nil {
