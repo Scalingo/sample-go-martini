@@ -15,8 +15,8 @@ import (
 	"github.com/martini-contrib/render"
 )
 
-func isPrime(value uint64) bool {
-	for i := uint64(2); i <= value/2; i++ {
+func isPrime(value int) bool {
+	for i := 2; i <= value/2; i++ {
 		if value%i == 0 {
 			return false
 		}
