@@ -39,8 +39,8 @@ func main() {
 			time.Sleep(time.Duration(sleep) * time.Second)
 		}
 		if req.URL.Query().Get("prime") != "" {
-			val := uint64(450743869)
-			log.Printf("Is %f prime: %t", val, isPrime(val))
+			val, _ := strconv.Atoi(req.URL.Query().Get("prime"))
+			log.Printf("Is %d prime: %t", val, isPrime(val))
 		}
 		r.HTML(200, "index", nil)
 	})
