@@ -1,0 +1,11 @@
+version: '2'
+services:
+  sample-go-martini:
+    build: .
+    volumes:
+      - ./:/go/src/github.com/Scalingo/sample-go-martini
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+    command: reflex -r '\.go$$' -s -- sh -c 'go install -race && /go/bin/sample-go-martini'

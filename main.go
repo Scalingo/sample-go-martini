@@ -15,6 +15,15 @@ import (
 	"github.com/martini-contrib/render"
 )
 
+func isPrime(value uint64) bool {
+	for i := uint64(2); i <= value/2; i++ {
+		if value%i == 0 {
+			return false
+		}
+	}
+	return value > 1
+}
+
 func main() {
 	m := martini.Classic()
 	m.Use(render.Renderer(
@@ -26,7 +35,12 @@ func main() {
 	m.Get("/", func(r render.Render, req *http.Request) {
 		if req.URL.Query().Get("wait") != "" {
 			sleep, _ := strconv.Atoi(req.URL.Query().Get("wait"))
+			log.Printf("Sleep for %d seconds\n", sleep)
 			time.Sleep(time.Duration(sleep) * time.Second)
+		}
+		if req.URL.Query().Get("prime") != "" {
+			val := uint64(450743869)
+			log.Printf("Is %f prime: %t", val, isPrime(val))
 		}
 		r.HTML(200, "index", nil)
 	})
