@@ -1,0 +1,7 @@
+deploy:
+  provider: scalingo
+  edge:
+    source: EtienneM/dpl
+    branch: fix/scalingo_deployment
+  on:
+    all_branches: true
