@@ -33,10 +33,15 @@ func main() {
 	))
 
 	m.Get("/", func(r render.Render, req *http.Request) {
-		if req.URL.Query().Get("wait") != "" {
-			sleep, _ := strconv.Atoi(req.URL.Query().Get("wait"))
-			log.Printf("Sleep for %d seconds\n", sleep)
-			time.Sleep(time.Duration(sleep) * time.Second)
+		wait := req.URL.Query().Get("wait")
+		if wait != "" {
+			sleep, err := time.ParseDuration(wait)
+			if err != nil {
+				r.Error(400)
+				return
+			}
+			log.Printf("Sleep for %s seconds\n", wait)
+			time.Sleep(sleep)
 		}
 		if req.URL.Query().Get("prime") != "" {
 			val, _ := strconv.Atoi(req.URL.Query().Get("prime"))
