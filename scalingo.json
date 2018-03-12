@@ -5,13 +5,9 @@
   "repository": "https://github.com/Scalingo/sample-go-martini",
   "website": "https://scalingo.com",
   "formation": {
-	  "web": {
-		  "amount": 1,
-		  "size": "S"
-	  },
-	  "other": {
-		  "amount": 1,
-		  "size": "S"
-	  }
+    "web": {
+      "amount": 1,
+      "size": "S"
+    },
   }
 }
