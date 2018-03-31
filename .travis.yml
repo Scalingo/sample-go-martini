@@ -1,0 +1,12 @@
+language: go
+go:
+  - "1.10"
+
+deploy:
+  provider: scalingo
+  app: sample-go-martini
+  api_key:
+    secure: "xa4QGB9AGGpSLnp618nSdr8vZuIhY8xeRbEpUlvRTWNF4Bk2Yjdi4T+RZNn5dWZeJtmWkNiEjZSGdpvBB9Zrb+YCkQ9CuuTamVGc0osC/c0geZxGywa1lmeNBTiAiR05APu6YZmzdCmEffiz9rfSYpBiupKbTwVmdbh+pwfmoyCRoeY+9fpQEB1f3jraBsnFuP0dJhwXNioxFs8NlMEvnrLrz3ExdydieQNM9gEZ54T/76dw4+YUZO+/+CZudkA6FefUxkcQE5Y9IgA7M9po0QGHJHVCl/hlUUK/WdvKKmFAQmgiQaMx6FrW8tafEmsaeqVbxJ0wonDftIKIMA4EYJ+vySyiHOsiEkWcsCyEUUnsh9OYEtTVi40WUbdBtcuLhaX8ySH5WtXIC6CpAKPAmsa9MSb4Ed0dHTgGwFY17R1zmQ2t8yC+U5rrFUyaNu14FoLSesrCBSOIN8DoaRVKoVU8BJkg9cHmBsMUtOBIrAGd8QkiaxZ3gw/T5Xa7akYN2+q4lIjnlYYZPUwVBo/o2UQls90wea/+9gsPETwZnc+q17JzRrUtyDLD6uak1xM2EwmQHKIPJzniCQqd6Quq7M4BG4x14V044JdrqqWwr2MpCRWDQiJxzJY5aX/qqK0aDspm+fk76+t5vSEoOeJG+cV6vrcKsJyg/+UISIww2tQ="
+  edge:
+    source: Soulou/dpl
+    branch: fix/scalingo-login
