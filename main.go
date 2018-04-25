@@ -32,6 +32,9 @@ func main() {
 		},
 	))
 
+	m.Get("/500", func(r render.Render, req *http.Request) {
+		r.Error(500)
+	})
 	m.Get("/", func(r render.Render, req *http.Request) {
 		wait := req.URL.Query().Get("wait")
 		if wait != "" {
