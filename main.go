@@ -36,6 +36,7 @@ func main() {
 		r.Error(500)
 	})
 	m.Get("/", func(r render.Render, req *http.Request) {
+		log.Printf("ENVIRONMENT %+v\n", os.Environ())
 		wait := req.URL.Query().Get("wait")
 		if wait != "" {
 			sleep, err := time.ParseDuration(wait)
