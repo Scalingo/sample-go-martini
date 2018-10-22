@@ -35,3 +35,4 @@
   root-package = "github.com/Scalingo/sample-go-martini"
   go-version = "go1.11"
   install = [ "." ]
+  ensure = false
