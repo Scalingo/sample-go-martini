@@ -32,6 +32,10 @@ func main() {
 		},
 	))
 
+	m.Get("/no_content-type", func(r render.Render, req *http.Request) {
+		r.Header().Del("Content-Type")
+		r.HTML(200, "index", nil)
+	})
 	m.Get("/500", func(r render.Render, req *http.Request) {
 		r.Error(500)
 	})
