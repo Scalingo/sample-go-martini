@@ -1,0 +1,8 @@
+github.com/codegangsta/inject v0.0.0-20140630231407-4b8172520a03 h1:SQR4QbNeg88VRohi+tlBo1rznUa2VWehq08n2NsrZjo=
+github.com/codegangsta/inject v0.0.0-20140630231407-4b8172520a03/go.mod h1:4Zcjuz89kmFXt9morQgcfYZAYZ5n8WHjt81YYWIwtTM=
+github.com/go-martini/martini v0.0.0-20150420183116-d39885924ac2 h1:qhl7FaRS0Vbks9QdBQdjzirPlLdDZtUGTXHK10Bb/J4=
+github.com/go-martini/martini v0.0.0-20150420183116-d39885924ac2/go.mod h1:/P9AEU963A2AYjv4d1V5eVL1CQbEJq6aCNHDDjibzu8=
+github.com/martini-contrib/render v0.0.0-20140708150504-b65063311fac h1:LMyJhoULFPg63YVtQz/sMwRgDYRfRhB3sisrSCvewQw=
+github.com/martini-contrib/render v0.0.0-20140708150504-b65063311fac/go.mod h1:Ah2dBMoxZEqk118as2T4u4fjfXarE0pPnMJaArZQZsI=
+github.com/oxtoacart/bpool v0.0.0-20140610012239-0f78ff9152c0 h1:S3va156G8Ubu+54qy3KkYyMneR+v9sW6tj4vqMgJh7c=
+github.com/oxtoacart/bpool v0.0.0-20140610012239-0f78ff9152c0/go.mod h1:L3UMQOThbttwfYRNFOWLLVXMhk5Lkio4GGOtw5UrxS0=
