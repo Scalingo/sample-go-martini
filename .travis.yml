@@ -2,6 +2,7 @@ deploy:
   provider: scalingo
   edge:
     source: EtienneM/dpl
-    branch: fix/scalingo_deployment
+    branch: master
+  app: test-dpl
   on:
     all_branches: true
