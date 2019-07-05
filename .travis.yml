@@ -1,8 +1,0 @@
-deploy:
-  provider: scalingo
-  edge:
-    source: EtienneM/dpl
-    branch: master
-  app: test-dpl
-  on:
-    all_branches: true
