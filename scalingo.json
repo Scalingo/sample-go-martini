@@ -4,6 +4,7 @@
   "logo": "https://scalingo.com/logo.svg",
   "repository": "https://github.com/Scalingo/sample-go-martini",
   "website": "https://scalingo.com",
+  "addons": ["postgresql:free"],
   "formation": {
     "web": {
       "amount": 1,
