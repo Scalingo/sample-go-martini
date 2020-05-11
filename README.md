@@ -10,7 +10,7 @@ http://golang.org/doc/install
 
 ### Build
 ```sh
-go get
+go build
 ```
 
 ### Execute
