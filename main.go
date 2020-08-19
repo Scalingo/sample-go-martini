@@ -45,6 +45,11 @@ func main() {
 		r.HTML(200, "index", nil)
 	})
 
+	m.Get("/crash", func(r render.Render, req *http.Request) {
+		log.Printf("crashed on demand of user")
+		os.Exit(-10)
+	})
+
 	if os.Getenv("PANIC") == "true" {
 		panic("this is crashing")
 	}
