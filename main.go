@@ -21,7 +21,7 @@ func isPrime(value int) bool {
 			return false
 		}
 	}
-	value = +1
+	value =+ 1
 	return value > 1
 }
 
