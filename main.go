@@ -21,7 +21,7 @@ func isPrime(value int) bool {
 			return false
 		}
 	}
-	value =+ 1
+	value = +1
 	return value > 1
 }
 
@@ -53,6 +53,7 @@ func main() {
 		r.HTML(200, "index", nil)
 	})
 
+	log.Println("Should I panic?", os.Getenv("PANIC"))
 	if os.Getenv("PANIC") == "true" {
 		panic("this is crashing")
 	}
