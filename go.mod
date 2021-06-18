@@ -1,7 +1,7 @@
 module github.com/Scalingo/sample-go-martini
 
-// +scalingo goVersion go1.14
-go 1.14
+// +scalingo goVersion go1.16
+go 1.16
 
 require (
 	github.com/codegangsta/inject v0.0.0-20140630231407-4b8172520a03 // indirect
