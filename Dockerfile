@@ -1,4 +1,4 @@
-FROM golang:1.16
+FROM golang:1.17
 
 RUN go get github.com/cespare/reflex
 ADD . /go/src/github.com/Scalingo/sample-go-martini
