@@ -64,9 +64,9 @@ func main() {
 	}()
 	log.Println("Listening on 0.0.0.0:" + port)
 
-	sigs := make(chan os.Signal)
+	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, syscall.SIGTERM)
-	_ = <-sigs
+	<-sigs
 	fmt.Println("SIGTERM, time to shutdown")
 	listener.Close()
 }
