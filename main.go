@@ -59,12 +59,14 @@ func main() {
 		panic(err)
 	}
 
-	go http.Serve(listener, m)
+	go func() {
+		_ = http.Serve(listener, m)
+	}()
 	log.Println("Listening on 0.0.0.0:" + port)
 
 	sigs := make(chan os.Signal)
 	signal.Notify(sigs, syscall.SIGTERM)
-	<-sigs
+	_ = <-sigs
 	fmt.Println("SIGTERM, time to shutdown")
 	listener.Close()
 }
