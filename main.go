@@ -62,7 +62,7 @@ func main() {
 	go func() {
 		_ = http.Serve(listener, m)
 	}()
-	log.Println("Listening on 0.0.0.0:" + port)
+	log.Println("Test on 0.0.0.0:" + port)
 
 	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, syscall.SIGTERM)
