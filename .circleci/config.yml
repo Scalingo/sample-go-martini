@@ -18,7 +18,10 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - run:
-          command: "sleep 40"
+          command: "sleep 5"
+      - run:
+          command: "exit 1"
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
